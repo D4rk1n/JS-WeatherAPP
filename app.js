@@ -2,8 +2,9 @@ const form = document.querySelector(".change-city");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 const timeImg = document.querySelector("img.time");
+const condICO = document.querySelector(".icon img");
 const myLocation = document.querySelector(".my-location");
-console.log(timeImg);
+console.log(condICO);
 
 
 const updateCity = async cityName => {
@@ -30,6 +31,7 @@ function updateUI(data) {
     else {
         timeImg.setAttribute("src","img/Night.svg");
     }
+    condICO.setAttribute("src",`img/icons/${conditions.WeatherIcon}.svg`);
 
 }
 
@@ -53,7 +55,12 @@ myLocation.addEventListener("click",e=>{
         function success(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            const data = getCurrLocation(lat,lon);
+            getCurrLocation(lat,lon)
+            .then(loc=>{
+                 return updateCity(loc.EnglishName);
+            }).then(data => {
+                updateUI(data);
+            })
         }
         
         function error(err) {
