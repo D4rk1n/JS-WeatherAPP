@@ -44,7 +44,9 @@ form.addEventListener("submit" , (e)=>{
     {
         updateCity(form.city.value.trim())
         .then(data => updateUI(data))
-        .catch(err => console.log(err.message));
+        .catch(err => {console.log(err.message)
+            alert("City Can't be found");
+        });
         form.reset(); 
     }
     else {
@@ -69,7 +71,9 @@ myLocation.addEventListener("click",e=>{
                  return updateCity(loc.EnglishName);
             }).then(data => {
                 updateUI(data);
-            })
+            }).catch(err => {console.log(err.message)
+                alert("City Can't be found");
+            });
         }
         
         function error(err) {
