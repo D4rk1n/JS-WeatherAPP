@@ -18,6 +18,15 @@ const getConditions = async (location) =>{
     const data = await response.json();
     return data[0];
 }
+const getCurrLocation = async (latitude,longitude) => {
+    const url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
+    const q = `?apikey=${apiKey}&q=${latitude},${longitude}`;
+    console.log(latitude,longitude)
+    const response =  await fetch(url+q);
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
 
 
 

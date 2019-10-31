@@ -2,6 +2,7 @@ const form = document.querySelector(".change-city");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 const timeImg = document.querySelector("img.time");
+const myLocation = document.querySelector(".my-location");
 console.log(timeImg);
 
 
@@ -43,3 +44,24 @@ form.addEventListener("submit" , (e)=>{
 form.addEventListener("keyup" , e => {
     //console.log(form.city.value.trim());
 })
+myLocation.addEventListener("click",e=>{
+    if(navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(success, error);
+        let lat = undefined;
+        let lon = undefined;
+        function success(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            const data = getCurrLocation(lat,lon);
+        }
+        
+        function error(err) {
+            console.log(err)
+        }
+    }
+    
+
+})
+
+        

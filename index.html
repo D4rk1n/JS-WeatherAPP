@@ -8,6 +8,19 @@
       .container {
           max-width:  400px;;
       }
+      .change-city {
+        padding-bottom: 10%;
+      }
+      .icon {
+          
+       
+          position: relative;
+          top : -50px;
+          border-radius: 50%;
+          width: 100px;
+          margin-bottom:-100px;
+         
+      }
   </style>
   <title>Weather</title>
 </head>
@@ -17,16 +30,24 @@
 
         <h1 class="text-dark text-center my-4">Weather Now</h1>
     
-        <form class="change-city my-4 text-center text-dar">
-          <label for="city">Enter a location for weather information</label>
-          <input type="text" name="city" class="form-control p-4">
+        <form class="change-city my-4 text-center text-dar ">
+            <label for="city">Enter a location for weather information</label>
+          <div class="input-group">
+          <input type="text" name="city" placeholder="Enter City" class="form-control p-4">
+          <div class="input-group-append" id="button-addon4">
+              <button class="btn btn-outline-secondary" type="submit">Submit</button>
+              <button class="btn btn-outline-secondary my-location" type="button">My Location</button>
+            </div>
+          </div>
         </form>
+
         
         <div class="card rounded">
+                <div class="icon bg-light mx-auto text-center">
+                        <img src="img/icons/1.svg">
+                    </div>
           <img src="https://via.placeholder.com/400x300" class="time card-img-top">
-          <div class="icon bg-light mx-auto text-center">
-
-          </div>
+          
           <div class="text-Danger text-uppercase text-center details">
             <h5 class="my-3" name="city">City name</h5>
             <div class="my-3" name="weather">Weather condition</div>
