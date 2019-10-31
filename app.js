@@ -40,10 +40,17 @@ function updateUI(data) {
 
 form.addEventListener("submit" , (e)=>{
     e.preventDefault();
-    updateCity(form.city.value.trim())
-    .then(data => updateUI(data))
-    .catch(err => console.log(err.message));
-    form.reset(); 
+    if(form.city.value.trim().length)
+    {
+        updateCity(form.city.value.trim())
+        .then(data => updateUI(data))
+        .catch(err => console.log(err.message));
+        form.reset(); 
+    }
+    else {
+        alert("Please Enter a City");
+    }
+  
 })
 form.addEventListener("keyup" , e => {
     //console.log(form.city.value.trim());
