@@ -32,6 +32,8 @@ function updateUI(data) {
         timeImg.setAttribute("src","img/Night.svg");
     }
     condICO.setAttribute("src",`img/icons/${conditions.WeatherIcon}.svg`);
+    if(card.classList.contains("d-none"))
+        card.classList.remove("d-none");
 
 }
 
