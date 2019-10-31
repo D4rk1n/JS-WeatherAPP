@@ -11,34 +11,35 @@
   </style>
   <title>Weather</title>
 </head>
-<body class="bg-danger">
+<body class="bg-light">
 
     <div class="container my-5 mx-auto ">
 
-        <h1 class="text-light text-center my-4">Weather Now</h1>
+        <h1 class="text-dark text-center my-4">Weather Now</h1>
     
-        <form class="change-location my-4 text-center text-white">
+        <form class="change-city my-4 text-center text-dar">
           <label for="city">Enter a location for weather information</label>
           <input type="text" name="city" class="form-control p-4">
         </form>
         
-        <div class="card  rounded">
+        <div class="card rounded">
           <img src="https://via.placeholder.com/400x300" class="time card-img-top">
           <div class="icon bg-light mx-auto text-center">
-            <!-- icon here later -->
+
           </div>
           <div class="text-Danger text-uppercase text-center details">
-            <h5 class="my-3">City name</h5>
-            <div class="my-3">Weather condition</div>
+            <h5 class="my-3" name="city">City name</h5>
+            <div class="my-3" name="weather">Weather condition</div>
             <div class="display-4 my-4">
-              <span>temp</span>
+              <span name="temp">temp</span>
               <span>&deg;C</span>
             </div>
           </div>
         </div>
       </div> 
+
+    <script src="weatherAPI.js"></script>
+    <script src="app.js"></script>
   
-  <script src="app.js"></script>
-  <script src="weatherAPI.js"></script>
 </body>
 </html>
