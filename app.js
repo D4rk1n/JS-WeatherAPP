@@ -63,16 +63,23 @@ myLocation.addEventListener("click",e=>{
         navigator.geolocation.getCurrentPosition(success, error);
         let lat = undefined;
         let lon = undefined;
+        let city = "";
         function success(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             getCurrLocation(lat,lon)
             .then(loc=>{
+                city = loc.AdministrativeArea.LocalizedName;
                  return updateCity(loc.EnglishName);
+                
             }).then(data => {
                 updateUI(data);
             }).catch(err => {console.log(err.message)
-                alert("City Can't be found");
+                //alert("City Can't be found");
+                console.log(city);
+                updateCity(city).then(data=>{
+                    updateUI(data);
+                })
             });
         }
         
