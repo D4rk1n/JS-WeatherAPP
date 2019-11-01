@@ -8,6 +8,7 @@ const getCity = async (city)=> {
     const q = `?apikey=${apiKey}&q=${city}`;
     const response =  await fetch(url+q);
     const data = await response.json();
+    console.log("City API returned ",data[0]);
     return data[0];
 }
 
@@ -16,15 +17,15 @@ const getConditions = async (location) =>{
     const q = `?apikey=${apiKey}`;
     const response =  await fetch(url+q);
     const data = await response.json();
+    console.log("Condintions API returned ",data[0]);
     return data[0];
 }
 const getCurrLocation = async (latitude,longitude) => {
     const url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
     const q = `?apikey=${apiKey}&q=${latitude},${longitude}`;
-    console.log(latitude,longitude)
     const response =  await fetch(url+q);
     const data = await response.json();
-    console.log(data);
+    console.log("Current location API returned ",data);
     return data;
 }
 

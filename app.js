@@ -14,8 +14,8 @@ const updateCity = async cityName => {
 }
 
 function updateUI(data) {
-    const{city , conditions} = data;
-    console.log(city,conditions);
+    const {city , conditions} = data;
+    console.log("update UI",data);
     details.innerHTML = `
     <h5 class="my-3" name="city">${city.EnglishName}</h5>
     <div class="my-3">${conditions.WeatherText}</div>
@@ -26,7 +26,6 @@ function updateUI(data) {
     if(conditions.IsDayTime)
     {
         timeImg.setAttribute("src","img/Day.svg");
-        console.log("day");
     }
     else {
         timeImg.setAttribute("src","img/Night.svg");
@@ -63,24 +62,23 @@ myLocation.addEventListener("click",e=>{
         navigator.geolocation.getCurrentPosition(success, error);
         let lat = undefined;
         let lon = undefined;
-        let city = "";
+        let city = undefined;
+        let conditions = undefined;
         function success(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             getCurrLocation(lat,lon)
             .then(loc=>{
-                city = loc.AdministrativeArea.LocalizedName;
-                 return updateCity(loc.EnglishName);
-                
-            }).then(data => {
+                city = loc;
+                console.log("city",city);
+                return getConditions(city.Key);
+            }).then( weather => {
+                conditions = weather;
+                console.log("cond",conditions);
+                const data = {city,conditions};
+                console.log(data);
                 updateUI(data);
-            }).catch(err => {console.log(err.message)
-                //alert("City Can't be found");
-                console.log(city);
-                updateCity(city).then(data=>{
-                    updateUI(data);
-                })
-            });
+            }).catch(err=>console.log(err.message));
         }
         
         function error(err) {
